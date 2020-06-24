@@ -7,7 +7,7 @@ public class MouseDetection : MonoBehaviour
     // Color of the node.
     private Material nodeColor;
 
-    // References to Controller
+    // References to Controller.
     private GameObject controller;
 
     private void Start() {
