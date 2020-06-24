@@ -22,8 +22,18 @@ public class DrawLine : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        // On left click, line create function
         if (Input.GetMouseButtonDown(0)) {
             CreateLine();
+        }
+
+        // On delete key down, delete function
+        if (Input.GetKeyDown("delete")) {
+            // Identify all lines and then delete each one.
+            GameObject[] lineClones = GameObject.FindGameObjectsWithTag("line");
+            foreach (GameObject line in lineClones) {
+                Destroy(line);
+            }
         }
     }
 
