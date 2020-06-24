@@ -16,6 +16,10 @@ public class DrawLine : MonoBehaviour
     // Whether a line has begun to be drawn or not
     private bool lineActive = false;
 
+    // currNode references
+    public bool onNode = false;
+    public Vector2 nodePos;
+
     // Update is called once per frame
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
@@ -33,18 +37,29 @@ public class DrawLine : MonoBehaviour
             nodeArr.Add(currLine.transform.Find("node2").gameObject);
 
             // Make current mouse position the starting point for the line
-            fingerPositions.Add(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            // If a node is nearby, snap to it
+            if (onNode) {
+                fingerPositions.Add(nodePos);
+            } else {
+                fingerPositions.Add(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
+
+            // Set start of line and node.
             lineRenderer.SetPosition(0, fingerPositions[0]);
             lineRenderer.SetPosition(1, fingerPositions[0]);
-
-            // Position/activate node and set lineActive to true
             nodeArr[0].transform.position = fingerPositions[0];
-            nodeArr[0].SetActive(true);
 
+            // Set node and lineActive to true.
+            nodeArr[0].SetActive(true);
             lineActive = true;
         } else {
-            // Get second position for the end of the line 
-            fingerPositions.Add(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            // Get second position for the end of the line
+            // If a node is nearby, snap to it
+            if (onNode) {
+                fingerPositions.Add(nodePos);
+            } else {
+                fingerPositions.Add(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
             lineRenderer.SetPosition(1, fingerPositions[1]);
 
             // Position/activate node

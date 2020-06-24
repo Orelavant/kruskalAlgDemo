@@ -98,7 +98,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
 --- !u!114 &4019358536871762381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c26691a4967284da8063db75c0b4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onNode: 0
 --- !u!1 &4193947058684538882
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +121,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4193947058684538892}
   - component: {fileID: 4193947058684538883}
-  - component: {fileID: -4066098299191162979}
   m_Layer: 0
   m_Name: line
   m_TagString: Untagged
@@ -243,24 +241,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!68 &-4066098299191162979
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4193947058684538882}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.4000001, y: 3}
-  - {x: 4.4, y: 3}
 --- !u!1 &5501595459749640037
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +339,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5
 --- !u!114 &1517184554223366752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,4 +352,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c26691a4967284da8063db75c0b4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onNode: 0
