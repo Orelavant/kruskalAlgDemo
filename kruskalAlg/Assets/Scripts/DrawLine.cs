@@ -35,6 +35,10 @@ public class DrawLine : MonoBehaviour
                 Destroy(line);
             }
         }
+
+        // On enter key down, run Kruskal's algorithm.
+        if (Input.GetKeyDown("space")) {
+        }
     }
 
     // Instantiates line and sets its start to the first mouse click position, and end to the second mouse click position.
