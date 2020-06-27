@@ -295,6 +295,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1659674400}
   - component: {fileID: 1659674401}
+  - component: {fileID: 1659674403}
+  - component: {fileID: 1659674402}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -330,7 +332,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 4193947058684538882, guid: 03790955da9ed3144a7d729a71b23381,
     type: 3}
-  currLine: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  edgeCollider: {fileID: 0}
-  fingerPositions: []
+  onNode: 0
+  nodePos: {x: 0, y: 0}
+--- !u!114 &1659674402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659674399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2bb97c37bf6d9244990553d4c45bfbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1659674403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659674399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b451a7f36f03f34e95dfecfc01fc74d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
