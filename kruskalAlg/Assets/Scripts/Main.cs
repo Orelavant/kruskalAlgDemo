@@ -7,14 +7,16 @@ public class Main : MonoBehaviour {
     private void Update() {
         // On enter key down, run Kruskal's algorithm.
         if (Input.GetKeyDown("space")) {
-            // Find all nodes and put them into forest.
+            // Populate forest and minHeap.
             collection();
-            // Put each edge into a min heap based on edge weight.
+
+            // Find minimum spanning tree.
+            kruskalAlg();
         }
     }
 
     private void collection() {
-        // Create UnionFind and Heap
+        // Create UnionFind and minHeap.
         UnionFind unionFind = new UnionFind();
         Heap minHeap = new Heap();
 
@@ -22,6 +24,7 @@ public class Main : MonoBehaviour {
         GameObject[] lineClones = GameObject.FindGameObjectsWithTag("line");
         List<Vector2> currNodes = new List<Vector2>();
 
+        // Populate forest and minHeap.
         foreach (GameObject line in lineClones) {
             // Get positions of the two nodes of line.
             Vector2 node1Pos = line.transform.Find("node1").gameObject.transform.position;
@@ -41,6 +44,9 @@ public class Main : MonoBehaviour {
             Edge newEdge = new Edge(edgeWeight, line);
             minHeap.insert(newEdge);
         }
+    }
+
+    private void kruskalAlg() {
 
     }
 }

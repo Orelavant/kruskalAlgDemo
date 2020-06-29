@@ -26,12 +26,70 @@ public class Heap : MonoBehaviour {
         bubbleUp(newIndex, pIndex);
     }
 
+    // Remove top element and mantain minHeap structure.
+    public Edge removeMin() {
+        // Saving min for later
+        Edge minEdge = min();
+
+        // If last element, remove and return it. Preventing overindex.
+        if (size() == 1) {
+            remove(size() - 1);
+            return minEdge;
+        }
+
+        // Saving last for later.
+        Edge last = data[size() - 1];
+
+        // Replacing min with the last element in the heap and removing the last element.
+        data[0] = last;
+        remove(size() - 1);
+
+        // If there is only top and left, pass right as left to avoid overindexing.
+        if (size() == 2) {
+            bubbleDown(0, left(0), left(0));
+        } else if (size() == 1) {
+            return minEdge;
+        } else {
+            // Bubble down to mantain heap structure.
+            bubbleDown(0, left(0), right(0));
+        }
+
+        return minEdge;
+    }
+
     private void bubbleUp(int newIndex, int pIndex) {
-        // While child is < parent, swap. Then reset indices for potential future swaps.
+        // While child is < parent, swap. 
+        // Then reset indices for potential future swaps.
         while (!(data[newIndex].greaterThan(data[pIndex]))) {
             swap(parent(newIndex), newIndex);
             newIndex = pIndex;
             pIndex = parent(newIndex);
+        }
+    }
+
+    private void bubbleDown(int newIndex, int lIndex, int rIndex) {
+        // While parent > either child, swap with the smallest child.
+        while (data[newIndex].greaterThan(data[lIndex]) ||
+            data[newIndex].greaterThan(data[lIndex])) {
+            // Go right if right is smaller. Check for over indexing.
+            if (data[lIndex].greaterThan(data[rIndex])) {
+                swap(newIndex, rIndex);
+                newIndex = rIndex;
+                lIndex = left(newIndex);
+                rIndex = right(newIndex);
+                if (rIndex >= size()) {
+                    break;
+                }
+                // Go left if left is smaller.
+            } else if (!(data[lIndex].greaterThan(data[rIndex]))) {
+                swap(newIndex, lIndex);
+                newIndex = lIndex;
+                lIndex = left(newIndex);
+                rIndex = right(newIndex);
+                if (rIndex >= size()) {
+                    break;
+                }
+            }
         }
     }
 
@@ -47,13 +105,37 @@ public class Heap : MonoBehaviour {
         return (int) Mathf.Ceil((index - 1) / 2);
     }
 
-    // Accesses leftChild based on arrayHeap implementation.
-    private int leftChild(int index) {
+    // Accesses left child based on arrayHeap implementation.
+    private int left(int index) {
         return 2 * index + 1;
     }
 
-    // Accesses rightChild based on arrayHeap implementation.
-    private int rightChild(int index) {
+    // Accesses right based on arrayHeap implementation.
+    private int right(int index) {
         return 2 * index + 2;
+    }
+
+    private Edge min() {
+        if (isEmpty()) {
+            return null;
+        }
+        return data[0];
+    }
+
+    public bool isEmpty() {
+        if (size() == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private int size() {
+        return data.Count;
+    }
+
+    private Edge remove(int index) {
+        Edge temp = data[index];
+        data.Remove(data[index]);
+        return temp;
     }
 }
