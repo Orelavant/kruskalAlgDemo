@@ -13,8 +13,8 @@ public class UnionFind : MonoBehaviour {
     }
 
     // Creates a new set and adds it to forest
-    public void createSet() {
-        Set newSet = new Set();
+    public void createSet(Vector2 nodePos) {
+        Set newSet = new Set(nodePos);
         forest.Add(newSet);
     }
 

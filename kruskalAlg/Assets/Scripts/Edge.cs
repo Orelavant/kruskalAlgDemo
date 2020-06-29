@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Edge : MonoBehaviour {
 
-    private int edgeWeight;
+    private float edgeWeight;
+    private GameObject line;
     private List<Set> vertices = new List<Set>();
 
     // Constructor
-    public Edge(int newEdgeWeight, Set node1, Set node2) {
+    public Edge(float newEdgeWeight, GameObject newLine) {
         edgeWeight = newEdgeWeight;
-        vertices.Add(node1);
-        vertices.Add(node2);
+        line = newLine;
+        //vertices.Add(node1);
+        //vertices.Add(node2);
     }
 
-    private int getEdgeWeight() {
+    private float getEdgeWeight() {
         return edgeWeight;
     }
 
