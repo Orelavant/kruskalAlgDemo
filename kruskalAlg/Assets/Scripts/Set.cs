@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Set class. Contains information of each node and reference to parent sets.
 public class Set : MonoBehaviour {
 
-    // Reference and rank of set
-    private string ID;
+    // Rank, parent ref, connections of set.
     private int rank;
     private Set parent;
 
     // Constructor
-    public Set(string newID) {
-        ID = newID;
+    public Set() {
         rank = 0;
-        parent = null;
-    }
-
-    public string getID() {
-        return ID;
+        parent = this;
     }
 
     public int getRank() {
@@ -28,15 +23,15 @@ public class Set : MonoBehaviour {
         return parent;
     }
 
-    public void setID(string newID) {
-        ID = newID;
-    }
-
     public void setRank(int newRank) {
         rank = newRank;
     }
 
     public void setParent(Set newParent) {
         parent = newParent;
+    }
+
+    public void addRank(int addInt) {
+        rank += addInt;
     }
 }
