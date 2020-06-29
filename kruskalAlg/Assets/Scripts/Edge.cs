@@ -16,12 +16,16 @@ public class Edge : MonoBehaviour {
         //vertices.Add(node2);
     }
 
-    private float getEdgeWeight() {
+    public float getEdgeWeight() {
         return edgeWeight;
     }
 
-    private Set getVertex(int index) {
+    public Set getVertex(int index) {
         return vertices[index];
+    }
+
+    public GameObject getLine() {
+        return line;
     }
 
     public bool greaterThan(Edge compEdge) {
@@ -29,5 +33,10 @@ public class Edge : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    public void setActive() {
+        Material lineMaterial = line.GetComponent<Renderer>().material;
+        lineMaterial = line.GetComponent<LineRenderer>().materials[1];
     }
 }

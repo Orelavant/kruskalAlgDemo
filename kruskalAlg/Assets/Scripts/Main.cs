@@ -3,7 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Main : MonoBehaviour {
-    
+
+    UnionFind unionFind;
+    Heap minHeap;
+
+    private void Start() {
+
+        // Create UnionFind and minHeap.
+        unionFind = new UnionFind();
+        minHeap = new Heap();
+    }
+
     private void Update() {
         // On enter key down, run Kruskal's algorithm.
         if (Input.GetKeyDown("space")) {
@@ -16,10 +26,6 @@ public class Main : MonoBehaviour {
     }
 
     private void collection() {
-        // Create UnionFind and minHeap.
-        UnionFind unionFind = new UnionFind();
-        Heap minHeap = new Heap();
-
         // Array of existing lines and current node and node location collection.
         GameObject[] lineClones = GameObject.FindGameObjectsWithTag("line");
         List<Vector2> currNodes = new List<Vector2>();
@@ -47,6 +53,20 @@ public class Main : MonoBehaviour {
     }
 
     private void kruskalAlg() {
+        // While minHeap is not empty and unionFind is not spanning...
+        while (!(minHeap.isEmpty()) && !(unionFind.isSpanning())) {
+            // Get the smallest edge and remove it.
+            Edge minEdge = minHeap.removeMin();
 
+            // Run union.
+            Set node1 = minEdge.getVertex(0);
+            Set node2 = minEdge.getVertex(1);
+            bool isUnion = unionFind.union(node1, node2);
+
+            // Change line color according to results of union.
+            if (isUnion) {
+                minEdge.setActive();
+            }
+        }
     }
 }

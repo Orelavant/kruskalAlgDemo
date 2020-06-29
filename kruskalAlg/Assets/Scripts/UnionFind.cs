@@ -12,6 +12,10 @@ public class UnionFind : MonoBehaviour {
         forest = null;
     }
 
+    public List<Set> getForest() {
+        return forest;
+    }
+
     // Creates a new set and adds it to forest
     public void createSet(Vector2 nodePos) {
         Set newSet = new Set(nodePos);
@@ -19,29 +23,48 @@ public class UnionFind : MonoBehaviour {
     }
 
     // Finds the parent set which contains set
-    public Set findSet(Set set) {
+    public Set getRoot(Set set) {
         while (set.getParent() != set) { 
-            findSet(set.getParent()); 
+            getRoot(set.getParent()); 
         }
         return set;   
     }
 
     // Combines the two sets if they belong to different sets
-    public void union(Set set1, Set set2) {
-        Set set1Root = findSet(set1);
-        Set set2Root = findSet(set2);
+    public bool union(Set set1, Set set2) {
+        Set set1Root = getRoot(set1);
+        Set set2Root = getRoot(set2);
 
-        // If the parents are not the same, compare ranks and set the lower ranked parent to the higher ranked.
+        // If they belong to different sets...
         if (set1Root != set2Root) {
+            // If the parents are not the same, compare ranks and set the lower ranked parent to the higher ranked.
             if (set1Root.getRank() >= set2Root.getRank()) {
                 set2Root.setParent(set1Root);
                 set1Root.addRank(1);
-                // HERE, SET THE LINE ACTIVES BETWEEN SET1 AND SET2
+                return true;
             } else {
                 set1Root.setParent(set2Root);
                 set2Root.addRank(1);
-                // HERE, SET THE LINE ACTIVES BETWEEN SET1 AND SET2
+                return true;
             }
         }
+        return false;
+    }
+
+    // Note: O(n log n) implementation. Optimize.
+    // Could do this by potentially removing sets which are now children. But that might take longer?
+    public bool isSpanning() {
+        // Find a root
+        Set currRoot = getRoot(forest[0]);
+
+        // Check if every set belongs to that root.
+        foreach (Set set in forest) {
+            Set newRoot = getRoot(set);
+            if (newRoot != currRoot) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
