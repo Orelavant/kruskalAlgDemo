@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnionFind : MonoBehaviour {
+public class UnionFind : object {
 
     // Reference to all nodes
     private List<Set> forest;
 
     // Constructor
     public UnionFind() {
-        forest = null;
+        forest = new List<Set>();
     }
 
     public List<Set> getForest() {

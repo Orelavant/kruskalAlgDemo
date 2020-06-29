@@ -17,7 +17,7 @@ public class MouseDetection : MonoBehaviour
 
     private void OnMouseOver() {
         // Notify controller that node is being hovered, send location and change color.
-        var controllerScript = controller.GetComponent<DrawLine>();
+        var controllerScript = controller.GetComponent<ControllerScript>();
         controllerScript.onNode = true;
         controllerScript.nodePos = transform.position;
         nodeColor.SetColor("_Color", Color.red);
@@ -25,8 +25,8 @@ public class MouseDetection : MonoBehaviour
 
     private void OnMouseExit() {
         // Notify controller that node is being hovered and change color.
-        var controllerScript = controller.GetComponent<DrawLine>();
-        controller.GetComponent<DrawLine>().onNode = false;
+        var controllerScript = controller.GetComponent<ControllerScript>();
+        controller.GetComponent<ControllerScript>().onNode = false;
         nodeColor.SetColor("_Color", Color.blue);
     }
 }

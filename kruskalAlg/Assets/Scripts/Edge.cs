@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Edge : MonoBehaviour {
+public class Edge : object {
 
     private float edgeWeight;
     private GameObject line;

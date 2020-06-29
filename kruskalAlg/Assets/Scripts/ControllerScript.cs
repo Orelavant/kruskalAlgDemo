@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawLine : MonoBehaviour
-{
+public class ControllerScript : MonoBehaviour {
+
     // Line object references.
     public GameObject linePrefab;
     private GameObject currLine;
@@ -20,6 +20,9 @@ public class DrawLine : MonoBehaviour
     public bool onNode = false;
     public Vector2 nodePos;
 
+    // Reference to main
+    Main main = new Main(); 
+
     // Update is called once per frame.
     void Update() {
         // On left click, line create function.
@@ -34,6 +37,15 @@ public class DrawLine : MonoBehaviour
             foreach (GameObject line in lineClones) {
                 Destroy(line);
             }
+        }
+
+        // On enter key down, run Kruskal's algorithm.
+        if (Input.GetKeyDown("space")) {
+            // Populate forest and minHeap.
+            main.collection();
+
+            // Find minimum spanning tree.
+            main.kruskalAlg();
         }
     }
 

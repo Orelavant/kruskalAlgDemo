@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Set class. Contains information of each node and reference to parent sets.
-public class Set : MonoBehaviour {
+public class Set : object {
 
     // Rank, parent ref, location of set.
     private int rank;

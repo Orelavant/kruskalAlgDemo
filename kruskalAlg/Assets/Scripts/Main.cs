@@ -2,30 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Main : MonoBehaviour {
+public class Main : object {
 
-    UnionFind unionFind;
-    Heap minHeap;
+    UnionFind unionFind = new UnionFind();
+    Heap minHeap = new Heap();
 
-    private void Start() {
-
-        // Create UnionFind and minHeap.
-        unionFind = new UnionFind();
-        minHeap = new Heap();
-    }
-
-    private void Update() {
-        // On enter key down, run Kruskal's algorithm.
-        if (Input.GetKeyDown("space")) {
-            // Populate forest and minHeap.
-            collection();
-
-            // Find minimum spanning tree.
-            kruskalAlg();
-        }
-    }
-
-    private void collection() {
+    public void collection() {
         // Array of existing lines and current node and node location collection.
         GameObject[] lineClones = GameObject.FindGameObjectsWithTag("line");
         List<Vector2> currNodes = new List<Vector2>();
@@ -52,7 +34,7 @@ public class Main : MonoBehaviour {
         }
     }
 
-    private void kruskalAlg() {
+    public void kruskalAlg() {
         // While minHeap is not empty and unionFind is not spanning...
         while (!(minHeap.isEmpty()) && !(unionFind.isSpanning())) {
             // Get the smallest edge and remove it.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Heap implemented using an array (arrayHeap) and as a minHeap.
-public class Heap : MonoBehaviour {
+public class Heap : object {
 
     // Array of data.
     private List<Edge> data;
