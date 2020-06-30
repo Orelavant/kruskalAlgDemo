@@ -44,6 +44,7 @@ public class ControllerScript : MonoBehaviour {
             // Populate forest and minHeap.
             main.collection();
             print(main.unionFind.forestToString());
+            print(main.minHeap.heapToString());
             // Find minimum spanning tree.
             //main.kruskalAlg();
         }

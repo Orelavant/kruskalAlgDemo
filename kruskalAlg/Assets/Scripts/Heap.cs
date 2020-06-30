@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 // Heap implemented using an array (arrayHeap) and as a minHeap.
@@ -137,5 +138,15 @@ public class Heap : object {
         Edge temp = data[index];
         data.Remove(data[index]);
         return temp;
+    }
+
+    public string heapToString() {
+        StringBuilder sb = new StringBuilder();
+
+        foreach (Edge edge in data) {
+            sb.Append(edge.getEdgeWeight());
+        }
+
+        return sb.ToString();
     }
 }
