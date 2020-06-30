@@ -43,9 +43,9 @@ public class ControllerScript : MonoBehaviour {
         if (Input.GetKeyDown("space")) {
             // Populate forest and minHeap.
             main.collection();
-
+            print(main.unionFind.forestToString());
             // Find minimum spanning tree.
-            main.kruskalAlg();
+            //main.kruskalAlg();
         }
     }
 

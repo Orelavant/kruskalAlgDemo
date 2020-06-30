@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Main : object {
 
-    UnionFind unionFind = new UnionFind();
-    Heap minHeap = new Heap();
+    public UnionFind unionFind = new UnionFind();
+    public Heap minHeap = new Heap();
 
     public void collection() {
         // Array of existing lines and current node and node location collection.
@@ -27,14 +27,15 @@ public class Main : object {
                 }
             }
 
-            // Then create an edge for each line with Edge().
+            // SOMETHING WITH EDGE CREATION OR HEAP INSERTION CRASHES UNITY
+/*            // Then create an edge for each line with Edge().
             float edgeWeight = Vector2.Distance(node1Pos, node2Pos);
             Edge newEdge = new Edge(edgeWeight, line);
-            minHeap.insert(newEdge);
+            minHeap.insert(newEdge);*/
         }
     }
 
-    public void kruskalAlg() {
+    /*public void kruskalAlg() {
         // While minHeap is not empty and unionFind is not spanning...
         while (!(minHeap.isEmpty()) && !(unionFind.isSpanning())) {
             // Get the smallest edge and remove it.
@@ -50,5 +51,5 @@ public class Main : object {
                 minEdge.setActive();
             }
         }
-    }
+    }*/
 }

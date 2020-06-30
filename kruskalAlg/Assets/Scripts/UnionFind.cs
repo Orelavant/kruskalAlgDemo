@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class UnionFind : object {
@@ -66,5 +67,15 @@ public class UnionFind : object {
         }
 
         return true;
+    }
+
+    public string forestToString() {
+        StringBuilder sb = new StringBuilder();
+
+        foreach(Set set in forest) {
+            sb.Append(set.getLocation());
+        }
+
+        return sb.ToString();
     }
 }
