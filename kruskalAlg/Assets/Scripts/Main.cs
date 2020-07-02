@@ -27,11 +27,10 @@ public class Main : object {
                 }
             }
 
-            // SOMETHING WITH HEAP INSERTION CRASHES UNITY
             // Then create an edge for each line with Edge() and insert into minHeap().
             float edgeWeight = Vector2.Distance(node1Pos, node2Pos);
             Edge newEdge = new Edge(edgeWeight, line);
-/*            minHeap.insert(newEdge);*/
+            minHeap.insert(newEdge);
         }
     }
 

@@ -61,7 +61,7 @@ public class Heap : object {
     private void bubbleUp(int newIndex, int pIndex) {
         // While child is < parent, swap. 
         // Then reset indices for potential future swaps.
-        while (!(data[newIndex].greaterThan(data[pIndex]))) {
+        while (!(data[newIndex].greaterThan(data[pIndex])) && newIndex != pIndex) {
             swap(parent(newIndex), newIndex);
             newIndex = pIndex;
             pIndex = parent(newIndex);
@@ -143,9 +143,11 @@ public class Heap : object {
     public string heapToString() {
         StringBuilder sb = new StringBuilder();
 
-        foreach (Edge edge in data) {
-            sb.Append(edge.getEdgeWeight());
+        // Will not do the last element.
+        for (int i = 0; i <= data.Count - 2; i++) {
+            sb.Append(data[i].getEdgeWeight() + ", ");
         }
+        sb.Append(data[data.Count - 2].getEdgeWeight());
 
         return sb.ToString();
     }

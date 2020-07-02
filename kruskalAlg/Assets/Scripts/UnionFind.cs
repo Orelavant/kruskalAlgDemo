@@ -72,9 +72,11 @@ public class UnionFind : object {
     public string forestToString() {
         StringBuilder sb = new StringBuilder();
 
-        foreach(Set set in forest) {
-            sb.Append(set.getLocation());
+        // Will not do the last element.
+        for (int i = 0; i <= forest.Count-2; i++) {
+            sb.Append(forest[i].getLocation() + ", ");
         }
+        sb.Append(forest[forest.Count-2].getLocation());
 
         return sb.ToString();
     }
