@@ -73,6 +73,7 @@ public class Heap : object {
         while (data[newIndex].greaterThan(data[lIndex]) ||
             data[newIndex].greaterThan(data[lIndex])) {
             // Go right if right is smaller. Check for over indexing.
+            // TODO: You might have same issue here as bubbleUp where lIndex & rIndex equal each other.
             if (data[lIndex].greaterThan(data[rIndex])) {
                 swap(newIndex, rIndex);
                 newIndex = rIndex;
