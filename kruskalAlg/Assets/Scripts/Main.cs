@@ -8,9 +8,10 @@ public class Main : object {
     public Heap minHeap = new Heap();
 
     public void collection() {
-        // Array of existing lines and current node location collection.
+        // Array of existing lines, current Sets, and current node location collection.
         GameObject[] lineClones = GameObject.FindGameObjectsWithTag("line");
         List<Set> currNodes = new List<Set>();
+        List<Vector2> currNodePos = new List<Vector2>();
 
         // Populate forest and minHeap.
         foreach (GameObject line in lineClones) {
@@ -31,13 +32,14 @@ public class Main : object {
                 // Create a new set
                 Set currSet = new Set(nodesPos[i]);
 
-                // If not in currNodes, add to union, currEdge, and to currNodePos.
-                if (!(currNodes.Contains(currSet))) {
+                // If not in currNodePos, add to union, currEdge, and to currNodePos.
+                if (!(currNodePos.Contains(currSet.getLocation()))) {
                     unionFind.addSet(currSet);
                     currEdge.setVertex(i, currSet);
                     currNodes.Add(currSet);
+                    currNodePos.Add(currSet.getLocation());
                 } else {
-                // If in currNodes, just add it to currEdge.
+                // If in currNodePos, just add it to currEdge.
                     Set addSet = currNodes.Find(Set => Set.getLocation() == currSet.getLocation());
                     currEdge.setVertex(i, addSet);
                 }

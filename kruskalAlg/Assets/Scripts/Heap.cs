@@ -147,7 +147,7 @@ public class Heap : object {
         for (int i = 0; i <= data.Count - 2; i++) {
             sb.Append(data[i].getEdgeWeight() + ", ");
         }
-        sb.Append(data[data.Count - 2].getEdgeWeight());
+        sb.Append(data[data.Count - 1].getEdgeWeight());
 
         return sb.ToString();
     }

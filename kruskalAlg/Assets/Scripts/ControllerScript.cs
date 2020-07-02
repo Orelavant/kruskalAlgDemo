@@ -45,7 +45,7 @@ public class ControllerScript : MonoBehaviour {
             main.collection();
 
             // Find minimum spanning tree.
-            main.kruskalAlg();
+            //main.kruskalAlg();
         }
     }
 

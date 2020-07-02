@@ -75,7 +75,7 @@ public class UnionFind : object {
         for (int i = 0; i <= forest.Count-2; i++) {
             sb.Append(forest[i].getLocation() + ", ");
         }
-        sb.Append(forest[forest.Count-2].getLocation());
+        sb.Append(forest[forest.Count-1].getLocation());
 
         return sb.ToString();
     }
