@@ -6,14 +6,11 @@ public class Edge : object {
 
     private float edgeWeight;
     private GameObject line;
-    private List<Set> vertices = new List<Set>();
+    private Set[] vertices = new Set[2];
 
     // Constructor
-    public Edge(float newEdgeWeight, GameObject newLine) {
-        edgeWeight = newEdgeWeight;
+    public Edge(GameObject newLine) {
         line = newLine;
-        //vertices.Add(node1);
-        //vertices.Add(node2);
     }
 
     public float getEdgeWeight() {
@@ -28,6 +25,14 @@ public class Edge : object {
         return line;
     }
 
+    public void setEdgeWeight(float newEdgeWeight) {
+        edgeWeight = newEdgeWeight;
+    }
+
+    public void setVertex(int index, Set newVertex) {
+        vertices[index] = newVertex;
+    }
+
     public bool greaterThan(Edge compEdge) {
         if (edgeWeight > compEdge.edgeWeight) {
             return true;
@@ -36,7 +41,7 @@ public class Edge : object {
     }
 
     public void setActive() {
-        Material lineMaterial = line.GetComponent<Renderer>().material;
-        lineMaterial = line.GetComponent<LineRenderer>().materials[1];
+        Color lineMaterialColor = line.GetComponent<Renderer>().material.color;
+        lineMaterialColor = Color.red;
     }
 }

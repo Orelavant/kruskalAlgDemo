@@ -18,8 +18,7 @@ public class UnionFind : object {
     }
 
     // Creates a new set and adds it to forest
-    public void createSet(Vector2 nodePos) {
-        Set newSet = new Set(nodePos);
+    public void addSet(Set newSet) {
         forest.Add(newSet);
     }
 

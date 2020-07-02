@@ -8,33 +8,47 @@ public class Main : object {
     public Heap minHeap = new Heap();
 
     public void collection() {
-        // Array of existing lines and current node and node location collection.
+        // Array of existing lines and current node location collection.
         GameObject[] lineClones = GameObject.FindGameObjectsWithTag("line");
-        List<Vector2> currNodes = new List<Vector2>();
+        List<Set> currNodes = new List<Set>();
 
         // Populate forest and minHeap.
         foreach (GameObject line in lineClones) {
+            //Create Edge.
+            Edge currEdge = new Edge(line);
+
             // Get positions of the two nodes of line.
             Vector2 node1Pos = line.transform.Find("node1").gameObject.transform.position;
             Vector2 node2Pos = line.transform.Find("node2").gameObject.transform.position;
             Vector2[] nodesPos = { node1Pos, node2Pos };
-            
-            // If not in currNodes, createSet() for each line point and add to currNodes.
-            foreach (Vector2 nodePos in nodesPos) {
-                if (!(currNodes.Contains(nodePos))) {
-                    unionFind.createSet(nodePos);
-                    currNodes.Add(nodePos);
+
+            // Set Edge weight
+            float edgeWeight = Vector2.Distance(node1Pos, node2Pos);
+            currEdge.setEdgeWeight(edgeWeight);
+
+            // Create a new set with nodesPos. Use for forest and the edge vertices.
+            for (int i = 0; i <= nodesPos.Length-1; i++) {
+                // Create a new set
+                Set currSet = new Set(nodesPos[i]);
+
+                // If not in currNodes, add to union, currEdge, and to currNodePos.
+                if (!(currNodes.Contains(currSet))) {
+                    unionFind.addSet(currSet);
+                    currEdge.setVertex(i, currSet);
+                    currNodes.Add(currSet);
+                } else {
+                // If in currNodes, just add it to currEdge.
+                    Set addSet = currNodes.Find(Set => Set.getLocation() == currSet.getLocation());
+                    currEdge.setVertex(i, addSet);
                 }
             }
 
-            // Then create an edge for each line with Edge() and insert into minHeap().
-            float edgeWeight = Vector2.Distance(node1Pos, node2Pos);
-            Edge newEdge = new Edge(edgeWeight, line);
-            minHeap.insert(newEdge);
+            // Insert into minHeap.
+            minHeap.insert(currEdge);
         }
     }
 
-    /*public void kruskalAlg() {
+    public void kruskalAlg() {
         // While minHeap is not empty and unionFind is not spanning...
         while (!(minHeap.isEmpty()) && !(unionFind.isSpanning())) {
             // Get the smallest edge and remove it.
@@ -50,5 +64,5 @@ public class Main : object {
                 minEdge.setActive();
             }
         }
-    }*/
+    }
 }
