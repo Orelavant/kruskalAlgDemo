@@ -6,8 +6,7 @@ public class ControllerScript : MonoBehaviour {
 
     // Line object references.
     public GameObject linePrefab;
-    private GameObject currLine;
-    public static Material activeLineColor; 
+    private GameObject currLine; 
 
     // Components of line.
     private LineRenderer lineRenderer;

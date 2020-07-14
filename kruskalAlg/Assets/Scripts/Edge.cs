@@ -41,7 +41,8 @@ public class Edge : object {
     }
 
     public void setActive() {
-        Material lineMaterial = line.GetComponent<Renderer>().material;
-        lineMaterial = ControllerScript.activeLineColor;
+        LineRenderer lineRenderer = line.GetComponent<LineRenderer>();
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.SetColors(Color.red, Color.red);
     }
 }
