@@ -16,6 +16,10 @@ public class ControllerScript : MonoBehaviour {
     // Whether a line has begun to be drawn or not.
     private bool lineActive = false;
 
+    // Bounds of line drawing.
+    private float xBound = 90;
+    private float yBound = 50;
+
     // Node references.
     public bool onNode = false;
     public Vector2 nodePos;
@@ -25,6 +29,9 @@ public class ControllerScript : MonoBehaviour {
 
     // Update is called once per frame.
     void Update() {
+        float x = Input.mousePosition.x;
+        float y = Input.mousePosition.y;
+
         // On left click, line create function.
         if (Input.GetMouseButtonDown(0)) {
             CreateLine();

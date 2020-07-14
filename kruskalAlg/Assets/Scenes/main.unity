@@ -174,7 +174,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 50.17576
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -280,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 732075121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2}
-  m_LocalScale: {x: 100, y: 100, z: 0}
+  m_LocalScale: {x: 250, y: 100, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -330,6 +330,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 4193947058684538882, guid: 03790955da9ed3144a7d729a71b23381,
     type: 3}
-  activeLineColor: {fileID: 2100000, guid: e7a07dc098d1c27428b4437fc228b214, type: 2}
   onNode: 0
   nodePos: {x: 0, y: 0}
