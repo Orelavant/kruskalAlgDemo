@@ -7,6 +7,7 @@ public class ControllerScript : MonoBehaviour {
     // Line object references.
     public GameObject linePrefab;
     private GameObject currLine;
+    public static Material activeLineColor; 
 
     // Components of line.
     private LineRenderer lineRenderer;
@@ -46,6 +47,8 @@ public class ControllerScript : MonoBehaviour {
 
             // Find minimum spanning tree.
             main.kruskalAlg();
+
+            print("done");
         }
     }
 

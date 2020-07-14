@@ -41,7 +41,7 @@ public class Edge : object {
     }
 
     public void setActive() {
-        Color lineMaterialColor = line.GetComponent<Renderer>().material.color;
-        lineMaterialColor = Color.red;
+        Material lineMaterial = line.GetComponent<Renderer>().material;
+        lineMaterial = ControllerScript.activeLineColor;
     }
 }

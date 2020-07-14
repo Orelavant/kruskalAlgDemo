@@ -330,5 +330,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 4193947058684538882, guid: 03790955da9ed3144a7d729a71b23381,
     type: 3}
+  activeLineColor: {fileID: 2100000, guid: e7a07dc098d1c27428b4437fc228b214, type: 2}
   onNode: 0
   nodePos: {x: 0, y: 0}

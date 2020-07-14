@@ -23,11 +23,15 @@ public class UnionFind : object {
     }
 
     // Finds the parent set which contains set
+    // Tried to do recursion, but was having issues.
+    // Fix naming inconsistencies (Node, vertex, set, etc.)
     public Set getRoot(Set set) {
-        while (set.getParent() != set) { 
-            getRoot(set.getParent()); 
+        Set node = set; 
+
+        while (node.getParent() != node) {
+            node = node.getParent();
         }
-        return set;   
+        return node; 
     }
 
     // Combines the two sets if they belong to different sets
