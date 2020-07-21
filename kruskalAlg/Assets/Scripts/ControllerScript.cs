@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControllerScript : MonoBehaviour {
 
     // Line object references.
     public GameObject linePrefab;
-    private GameObject currLine; 
+    private GameObject currLine;
 
     // Components of line.
     private LineRenderer lineRenderer;
@@ -25,7 +26,7 @@ public class ControllerScript : MonoBehaviour {
     public Vector2 nodePos;
 
     // Reference to main
-    Main main = new Main(); 
+    Main main = new Main();
 
     // Update is called once per frame.
     void Update() {
@@ -83,6 +84,19 @@ public class ControllerScript : MonoBehaviour {
             // Set node to true and lineActive to false.
             nodeArr[1].SetActive(true);
             lineActive = false;
+
+            // Display edge distance above line
+            float edgeDistance = Vector2.Distance(nodeArr[0].transform.position, nodeArr[1].transform.position);
+
+            // Getting and setting canvas componenets.
+            Canvas canvas = currLine.GetComponentInChildren<Canvas>();
+            Text weightText = canvas.GetComponentInChildren<Text>();
+
+            // Displaying edgeDistance in correct position
+            Vector2 weightTextPosition = weightText.GetComponent<RectTransform>().position;
+            weightTextPosition = new Vector2(edgeDistance/2, nodeArr[0].transform.position.y + 5);
+            print(weightTextPosition);
+            weightText.text = edgeDistance.ToString("F2");
 
             // Clear node positions and fingerpositions.
             nodeArr.Clear();
